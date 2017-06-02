@@ -17,7 +17,6 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-
 app.post('/authenticate', function (req, res) {
   var user = userData.find(function (u) {
     return isEqual(req.body.user, u)
