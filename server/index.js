@@ -19,15 +19,12 @@ app.use(bodyParser.json())
 
 app.post('/authenticate', function (req, res) {
   var user = userData.find(function (u) {
-
-    console.log(req.body.user);
-    console.log(u);
     
     return isEqual(req.body.user, u)
   })
 
   if (user) {
-    console.log("success!");
+    
     res.json({ token: token })
   } else {
     res.status(401).json({ error: 'invalid credentials' })

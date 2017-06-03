@@ -6,12 +6,16 @@
 
 */
 
+//For error message
+var error = document.getElementById("error-message");
+
 //for submit button
-var request = document.getElementById("myForm");
+var myForm = document.getElementById("myForm");
 
 //when button is clicked, submit form
-request.addEventListener("submit", function(){
+myForm.addEventListener("submit", function(){
 
+//values of input fields
    var userValue = document.getElementById("user").value;
    var userPass = document.getElementById("password").value;
 
@@ -31,30 +35,43 @@ request.addEventListener("submit", function(){
                 success: function (data) {
 
                     //storing the token for use in 2nd request
-                    var serverToken = data;
+                    var token = data;
+                    console.log(token.token);
 
                     //Get route to the calls 
                     $.ajax({
 
                         url:'http://localhost:3000/calls',
                         type:'GET',
-                        
-                        beforeSend:function(req){
 
-                            req.setRequestHeader('X-TOKEN', serverToken);
-                        },
+                        //set request header for server to accept my token
+                       beforeSend:function(req){
 
-                            sucess:function(response){
+                           req.setRequestHeader("X-TOKEN", token.token)
+                       },          
+                            success:function(response){
 
-                                console.log("Token was accepted " + response);
+                                console.log(response);
+
+                                //hide form 
+                                
+
                             }
 
                             //start of second ajax call
+                    }).fail(function(){
+
+                        console.log("something went wrong with your request. Please try again");
                     });
 
                 }
+                //start of the first ajax call
 
-            });
+                //if the credentials are wrong, display error
+            }).fail(function(){
+
+                error.textContent = "incorrect credentials";
+            })
    
 
 });
