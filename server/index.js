@@ -23,7 +23,7 @@ app.post('/authenticate', function (req, res) {
     console.log(req.body.user);
     console.log(u);
     
-    return isEqual(req.body.user, u.email)
+    return isEqual(req.body.user, u)
   })
 
   if (user) {

@@ -17,19 +17,41 @@ request.addEventListener("submit", function(){
 
  
    //auth credentials
-   var postData = {
+   var user = {
 
-       "user": userValue,
+       "email": userValue, 
        "password":userPass
    };
 
-
-
+   //Post route to authenticate
    $.ajax({
                 url: 'http://localhost:3000/authenticate',
                 type: 'POST',
-                data:postData,
+                data:{user},
                 success: function (data) {
+
+                    //storing the token for use in 2nd request
+                    var serverToken = data;
+
+                    //Get route to the calls 
+                    $.ajax({
+
+                        url:'http://localhost:3000/calls',
+                        type:'GET',
+                        
+                        beforeSend:function(req){
+
+                            req.setRequestHeader('X-TOKEN', serverToken);
+                        },
+
+                            sucess:function(response){
+
+                                console.log("Token was accepted " + response);
+                            }
+
+                            //start of second ajax call
+                    });
+
                 }
 
             });
