@@ -4,14 +4,15 @@
     <meta charset="utf-8" />
     <title>code-challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
+
     <link href="./css/normalize.css" rel="stylesheet" />
     <link href="./css/index.css" rel="stylesheet" />
+  
     
   </head>
-  <body ng-app="gcApp">  
+  <body>  
       
-    <!--<form action="http://localhost:3000/authenticate" method="POST">-->
+    <form id="myForm">
 
       <!--error message if credentials are incorrect-->
       <center><p id="error-message"></p></center>
@@ -22,9 +23,10 @@
       
       <input id="button" type="submit" type="Submit" value="Submit"/> 
 
-    <!--</form>-->
+    </form>
 
     <script src="bundle.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="client/index.js"></script>
     
   </body>

@@ -7,41 +7,34 @@
 */
 
 //for submit button
-var request = document.getElementById("#button");
-
+var request = document.getElementById("myForm");
 
 //when button is clicked, submit form
-button.addEventListener("click", function(){
-    
+request.addEventListener("submit", function(){
 
-//get values of the input boxes
-var userCred = document.querySelector("#user").value;     
-var userPass = document.querySelector("#password").value;     
+   var userValue = document.getElementById("user").value;
+   var userPass = document.getElementById("password").value;
+
+ 
+   //auth credentials
+   var postData = {
+
+       "user": userValue,
+       "password":userPass
+   };
 
 
-//create form data object using FormData object and add values
-var formData = new FormData();
-formData.append("user", userCred);
-formData.append("pass", userPass);
 
-fetch("http://localhost:3000/authenticate",{
+   $.ajax({
+                url: 'http://localhost:3000/authenticate',
+                type: 'POST',
+                data:postData,
+                success: function (data) {
+                }
 
-headers: {
-  'Accept': 'application/json, *.*, X-TOKEN',
-  'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-  
-  },
-  
-    method: "POST",
-    mode:"cors",
-    credentials:"same-origin",
-    body:formData
-
-}).then(function(response){
-
-    
+            });
+   
 
 });
 
 
-});
