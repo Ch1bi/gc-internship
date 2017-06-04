@@ -27,53 +27,60 @@ myForm.addEventListener("submit", function(){
        "password":userPass
    };
 
-   //Post route to authenticate
-   $.ajax({
-                url: 'http://localhost:3000/authenticate',
+   var postRequest = $.ajax({
+
+      url: 'http://localhost:3000/authenticate',
                 type: 'POST',
-                data:{user},
-                success: function (data) {
+                data:{user}                  
+       
+   });
 
-                    //storing the token for use in 2nd request
-                    var token = data;
-                    console.log(token.token);
+   postRequest.done(function(data){
 
-                    //Get route to the calls 
-                    $.ajax({
+    var token = data;
+    console.log(token.token);
+    getCalls(token);
+});
 
-                        url:'http://localhost:3000/calls',
-                        type:'GET',
+postRequest.fail(function(){
 
-                        //set request header for server to accept my token
-                       beforeSend:function(req){
+    error.textContent = "incorrect credentials";
+});
 
-                           req.setRequestHeader("X-TOKEN", token.token)
-                       },          
-                            success:function(response){
 
-                                console.log(response);
-
-                                //hide form 
-                                
-
-                            }
-
-                            //start of second ajax call
-                    }).fail(function(){
-
-                        console.log("something went wrong with your request. Please try again");
-                    });
-
-                }
-                //start of the first ajax call
-
-                //if the credentials are wrong, display error
-            }).fail(function(){
-
-                error.textContent = "incorrect credentials";
-            })
-   
 
 });
+
+//function that sends the GET request
+function getCalls(token){
+
+    //Inner GET request to call route
+    $.ajax({
+
+      url:'http://localhost:3000/calls',
+      type:'GET',
+        //set request header for server to accept my token
+         beforeSend:function(req){
+
+        req.setRequestHeader("X-TOKEN", token.token);
+                            },                 
+       
+   })
+   //hide form if GET is successful
+   .done(function(data){
+
+       console.log(data);
+       hideForm();
+       
+   })
+
+
+}
+
+function hideForm(){
+
+    console.log("hide form runs");
+    document.getElementById("hide").style.display = "none";
+}
 
 
