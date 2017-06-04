@@ -46,10 +46,10 @@ var callData = [{
   'callTrackingVersion': '2'
 }]
 
-var stuff = function(){
+// var stuff = function(){
 
-  console.log(callData[0]);
-}
+//   console.log(callData[0]);
+// }
 
-stuff();
+// stuff();
 module.exports = callData

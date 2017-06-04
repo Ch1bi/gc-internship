@@ -20,4 +20,9 @@ form{
     
    color:red;
   }
+
+  #myForm{
+
+    display: block;
+  }
   
