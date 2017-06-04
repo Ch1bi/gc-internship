@@ -15,6 +15,7 @@ var myForm = document.getElementById("myForm");
 //when button is clicked, submit form
 myForm.addEventListener("submit", function(){
 
+
 //values of input fields
    var userValue = document.getElementById("user").value;
    var userPass = document.getElementById("password").value;
@@ -66,21 +67,47 @@ function getCalls(token){
                             },                 
        
    })
-   //hide form if GET is successful
+   //populate table if GET is successful
    .done(function(data){
 
        console.log(data);
-       hideForm();
+       drawTable(data);
        
+   })
+
+   .fail(function(){
+
+       console.log("something went wrong with GET request");
    })
 
 
 }
 
-function hideForm(){
+//function that will dynamically create table
+function drawTable(info){
 
-    console.log("hide form runs");
-    document.getElementById("hide").style.display = "none";
+    console.log("drawing table...");
+
+//create table
+var table = document.createElement("table");
+table.border = 1;
+
+var columns = 3;
+
+var row = table.insertRow(-1);
+for(var i = 0; i < columns; i++){
+
+    var header = document.createElement("th");
+    header.textContent = "Calls";
+    row.appendChild(header);
+}
+
+var tableDiv = document.getElementById("call-data");
+    tableDiv.innerHTML = "";
+    tableDiv.appendChild(table);
+
+
+
 }
 
 
