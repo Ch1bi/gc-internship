@@ -8,13 +8,6 @@ body {
 
 }
 
-form{
-  width: 300px; 
-  height: 200px; 
-  margin: 0 auto;
-  padding-top:20%;
-  }
-
 
   /*error message styles*/
   #error-message{
@@ -22,10 +15,47 @@ form{
    color:red;
   }
 
+  /*end error message styles*/
+
+/*Styles for form*/
+
+form{
+  width: 300px; 
+  height: 200px; 
+  margin: 0 auto;
+  padding-top:20%;
+  }
+
   #myForm{
 
-    display: block;
+    
+    text-align: center;   
   }
+
+  #password{
+
+    margin-top:0.5em;
+    margin-left:0.3em;
+  }
+
+  #user, #password{
+    
+    border: 1px solid black;
+    padding:3px;
+    text-align:center;
+  }
+
+  #button{
+
+    margin-top:0.5em;
+    background-color:black;
+    color:white;
+    border:none;
+    padding:3px;
+  }
+  /*End styles for form*/
+
+  /*Styles for table*/
 
   #myTable {
     visibility: hidden;
@@ -41,6 +71,7 @@ form{
     border-collapse: collapse;
 	  padding:3px;
   }
+  /*End styles for table*/
 
   
   
