@@ -47,11 +47,11 @@ function startRequests(){
 
             error:function(){
 
-                error.textContent = "invalid credentials";
+                error.style.visibility="visible";
 
                 setTimeout(function(){
 
-                error.style.display = "none";
+                error.style.visibility = "hidden";
 
                 },3000)
                 

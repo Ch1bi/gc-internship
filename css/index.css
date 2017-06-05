@@ -13,6 +13,7 @@ body {
   #error-message{
     
    color:red;
+   visibility: hidden;
   }
 
   /*end error message styles*/
