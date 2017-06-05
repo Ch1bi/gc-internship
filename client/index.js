@@ -1,8 +1,3 @@
-/* server side validation.
-1. POST AJAX request to server. Send credentials as an object If credentials don't match - show error message
-2. If credentials do match, hide login, GET AJAX Request and get call values for specific user
-*/
-
 //For error message
 var error = document.getElementById("error-message");
 
@@ -52,7 +47,7 @@ function startRequests(){
 
             error:function(){
 
-                error.textContent = "incorrect credentials";
+                error.textContent = "invalid credentials";
 
                 setTimeout(function(){
 
@@ -73,6 +68,7 @@ function getCalls(token){
 
       url:'http://localhost:3000/calls',
       type:'GET',
+
         //set request header for server to accept my token
          headers: {
         'X-TOKEN': token.token
@@ -80,8 +76,6 @@ function getCalls(token){
 
 
     success:function(calls){
-        
-        //console.log(calls.calls[0].sid);
         
         //pass the call data to the drawTable function
         drawTable(calls);
@@ -108,6 +102,7 @@ function drawTable(data){
         
           var cell = row.insertCell(-1);
 
+          //value of current iteration will decide what is added to table 
           if(j == 0){
 
             cell.innerHTML = data.calls[i].sid;
