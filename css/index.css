@@ -28,6 +28,7 @@ form{
   }
 
   #myTable {
+    visibility: hidden;
     position:relative;
     top:20%;
     border: 1px solid black;

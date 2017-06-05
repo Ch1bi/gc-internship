@@ -123,8 +123,8 @@ function drawTable(data){
         
 
     }
-
-
+        //table is displayed once loop completes
+        table.style.visibility = "visible";
 
         }
         
