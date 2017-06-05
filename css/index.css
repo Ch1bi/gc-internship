@@ -67,10 +67,14 @@ form{
   }
 
    #myTable th, #myTable td {
-
     border: 1px solid black;
     border-collapse: collapse;
-	  padding:3px;
+	  padding:10px;
+  }
+
+  #myTable .titles{
+
+    font-weight: bold;
   }
   /*End styles for table*/
 

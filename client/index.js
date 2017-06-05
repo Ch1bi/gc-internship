@@ -42,7 +42,6 @@ function startRequests(){
                 
                 myForm.style.display="none";
                 getCalls(data);
-                
             },
 
             error:function(){
@@ -55,7 +54,8 @@ function startRequests(){
 
                 },3000)
                 
-            }
+            },
+
    });
 
 
@@ -79,7 +79,8 @@ function getCalls(token){
         
         //pass the call data to the drawTable function
         drawTable(calls);
-    }     
+    },
+
        
    });
 
@@ -123,7 +124,7 @@ function drawTable(data){
         
 
     }
-        //table is displayed once loop completes
+        //table is displayed once loops complete
         table.style.visibility = "visible";
 
         }
