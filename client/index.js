@@ -99,24 +99,38 @@ function drawTable(data){
     var cols = 3;
 
     //add rows
-    for(var i = 0; i < cols; i ++){
+    for(var i = 0; i < cols; i++){
 
         row = table.insertRow(-1);
-        var cell = row.insertCell(-1);
-        cell.innerHTML = data.calls[i].sid
-        //console.log(data.calls[i].sid);
+
+        for(var j = 0; j < cols; j++)
+        {
+        
+          var cell = row.insertCell(-1);
+
+          if(j == 0){
+
+            cell.innerHTML = data.calls[i].sid;
+          }
+
+          else if(j == 1){
+
+            cell.innerHTML = data.calls[i].from;
+          }
+
+          else if(j == 2){
+
+              cell.innerHTML = data.calls[i].result;
+          }
+          
+
+        } 
+        
+
     }
+
+
+
+        }
+        
     
-}
-
-// function hideForm(){
-
-//     if (myForm.style.display = 'none') {
-
-//         $("myForm").show();
-//     } 
-    
-//     else {
-//         $("myForm").hide();
-//     }
-// }

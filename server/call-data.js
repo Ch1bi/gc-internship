@@ -46,10 +46,5 @@ var callData = [{
   'callTrackingVersion': '2'
 }]
 
-var stuff = function(){
 
-  console.log(JSON.stringify(callData));
-}
-
-stuff();
 module.exports = callData
