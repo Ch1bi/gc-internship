@@ -9,13 +9,18 @@ var error = document.getElementById("error-message");
 //for submit button
 var myForm = document.getElementById("myForm");
 
+//for table
+var table = document.getElementById("myTable");
+
  
 //when button is clicked, submit form
-myForm.addEventListener("submit", function(){
+myForm.addEventListener("submit", function(e){
 
+    e.preventDefault();
     startRequests();
-});
+}, false);
 
+//function that starts the AJAX requests
 function startRequests(){
 
 
@@ -31,6 +36,7 @@ function startRequests(){
        "password":userPass
    };
 
+   
     $.ajax({
 
       url: 'http://localhost:3000/authenticate',
@@ -38,7 +44,8 @@ function startRequests(){
                 data:{user},
 
             success:function(data){
-
+                
+                myForm.style.display="none";
                 getCalls(data);
                 
             },
@@ -46,6 +53,13 @@ function startRequests(){
             error:function(){
 
                 error.textContent = "incorrect credentials";
+
+                setTimeout(function(){
+
+                error.style.display = "none";
+
+                },3000)
+                
             }
    });
 
@@ -67,21 +81,42 @@ function getCalls(token){
 
     success:function(calls){
         
-        console.log(JSON.stringify(calls));
+        //console.log(calls.calls[0].sid);
+        
+        //pass the call data to the drawTable function
+        drawTable(calls);
     }     
        
    });
 
 }
 
-function hideForm(){
+function drawTable(data){
 
-    if (myForm.style.display = 'none') {
+    //rows
+    var row;
+    //number of columns
+    var cols = 3;
 
-        $("myForm").show();
-    } 
-    
-    else {
-        $("myForm").hide();
+    //add rows
+    for(var i = 0; i < cols; i ++){
+
+        row = table.insertRow(-1);
+        var cell = row.insertCell(-1);
+        cell.innerHTML = data.calls[i].sid
+        //console.log(data.calls[i].sid);
     }
+    
 }
+
+// function hideForm(){
+
+//     if (myForm.style.display = 'none') {
+
+//         $("myForm").show();
+//     } 
+    
+//     else {
+//         $("myForm").hide();
+//     }
+// }
