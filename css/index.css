@@ -1,82 +1,57 @@
- html, body {
+html, body {
   position: relative;
   height: 100%;
 }
 
 body {
   font-family: sans-serif;
-
 }
 
+#error-message {
+  color: red;
+}
 
-  /*error message styles*/
-  #error-message{
-    
-   color:red;
-   visibility: hidden;
-  }
-
-  /*end error message styles*/
-
-/*Styles for form*/
-
-form{
-  width: 300px; 
-  height: 200px; 
+#myForm {
+  width: 300px;
+  height: 200px;
   margin: 0 auto;
-  padding-top:20%;
-  }
+  padding-top: 20%;
+  text-align: center;
+}
 
-  #myForm{
+#password {
+  margin-top: 0.5em;
+  margin-left: 0.3em;
+}
 
-    
-    text-align: center;   
-  }
+#user, #password {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+}
 
-  #password{
+#button {
+  margin-top: 0.5em;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 7px;
+}
 
-    margin-top:0.5em;
-    margin-left:0.3em;
-  }
+#myTable {
+  display: none;
+  position: relative;
+  top: 20%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 
-  #user, #password{
-    
-    border: 1px solid black;
-    padding:3px;
-    text-align:center;
-  }
+#myTable th, #myTable td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
 
-  #button{
-
-    margin-top:0.5em;
-    background-color:black;
-    color:white;
-    border:none;
-    padding:7px;
-  }
-  /*End styles for form*/
-
-  /*Styles for table*/
-
-  #myTable {
-    visibility: hidden;
-    position:relative;
-    top:20%;
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-
-   #myTable th, #myTable td {
-    border: 1px solid black;
-    border-collapse: collapse;
-	  padding:10px;
-  }
-
-  #myTable .titles{
-
-    font-weight: bold;
-  }
-  /*End styles for table*/
-
-  
-  
+#myTable .titles {
+  font-weight: bold;
+}

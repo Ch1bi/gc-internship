@@ -4,46 +4,31 @@
     <meta charset="utf-8" />
     <title>code-challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link href="./css/normalize.css" rel="stylesheet" />
     <link href="./css/index.css" rel="stylesheet" />
-  
-    
   </head>
-  <body>  
-      
+
+  <body>
     <form id="myForm">
-
-      <!--error message if credentials are incorrect-->
-      <p id="error-message">invalid credentials</p>
-
-      <input id="user" name="user" type="text" placeholder="email"/>
-
-      <input id="password" name="password" type="password" placeholder="password"/>
-      <br>
-      <input id="button" type="submit" type="Submit" value="login"/> 
-
+      <p id="error-message"></p>
+      <input id="user" name="user[username]" type="text" placeholder="email" />
+      <input id="password" name="user[password]" type="password" placeholder="password" />
+      <br />
+      <input id="button" type="submit" type="Submit" value="login" />
     </form>
 
+    <table id="myTable" align="center">
+      <tr>
+        <th colspan="3">Calls</th>
+      </tr>
 
-   <table id="myTable" align="center">
+      <tr align="center" class="titles">
+        <td>sid</td>
+        <td>from</td>
+        <td>result</td>
+      </tr>
+    </table>
 
-  <tr>
-    <th colspan="3">Calls</th>
-  </tr>
-
-  <tr align="center" class="titles">
-    <td>sid</td>
-    <td>from</td>
-    <td>result</td>
-  </tr>
-
-
-</table>
-  
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
     <script src="bundle.js"></script>
-    <script src="client/index.js"></script>
-    
   </body>
 </html>
